@@ -8,6 +8,7 @@ public class BinarAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(BinarAppApplication.class, args);
+
 	}
 
 }
