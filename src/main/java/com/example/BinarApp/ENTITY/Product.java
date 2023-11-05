@@ -9,19 +9,23 @@ import javax.persistence.*;
 @Data
 @Table(name = "products")
 public class Product {
+    @Id
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator")
+    private String  id;
 
-@Id
-@GenericGenerator(strategy = "uuid2", name = "uuid")
-@GeneratedValue(generator = "uuid")
-    private String id;
+    @Column(name = "product_code", length = 5, nullable = false, unique = true)
+    private String productCode;
 
-    @Column(name = "product_code")
-    private Long ProductCode;
-
+    @Column(name = "product_name", length = 30, nullable = false)
     private String productName;
 
+    @Column(name = "product_price", nullable = false)
     private Double price;
 
     @ManyToOne
-    @JoinColumn(name = "merchant_id")
-    private Merchant merchant;}
+    @JoinColumn(name = "merchant_id", nullable = false, referencedColumnName = "id")
+    private Merchant merchant;
+}

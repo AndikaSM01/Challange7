@@ -1,4 +1,4 @@
-package com.example.BinarApp.MODEL.RESPONSE;
+package com.example.BinarApp.MODEL.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -6,6 +6,6 @@ import lombok.Setter;
 @Setter
 @Getter
 public class OrderItemDTO {
-    private Long productId;
+    private String productId;
     private int quantity;
 }

@@ -1,5 +1,5 @@
 package com.example.BinarApp.ENTITY;
-import com.example.BinarApp.MODEL.RESPONSE.OrderStatus;
+import com.example.BinarApp.MODEL.ENUM.OrderStatus;
 import lombok.Data;
 
 import javax.persistence.*;

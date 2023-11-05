@@ -1,5 +1,6 @@
-package com.example.BinarApp.MODEL.RESPONSE;
+package com.example.BinarApp.MODEL.REQUEST;
 
+import com.example.BinarApp.MODEL.DTO.OrderItemDTO;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface ProdukRepository extends JpaRepository<Product,Long> {
+public interface ProdukRepository extends JpaRepository<Product,String> {
 
 
     //@Query("SELECT p FROM Product p INNER JOIN p.merchant m ORDER BY p.addedTime ASC")

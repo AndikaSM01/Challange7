@@ -12,20 +12,20 @@ import java.util.List;
 @Table(name = "merchants")
 public class Merchant {
 
-//    @Id
-//    @GenericGenerator(strategy = "uuid2", name = "uuid")
-//    @GeneratedValue(generator = "uuid")
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
-    @Column(name = "merchant_code")
+    @Column(name = "merchant_code", length = 5, nullable = false, unique = true)
     private String merchantCode;
 
-    @Column(name = "merchant_name",  unique = true)
+    @Column(name = "merchant_name", length = 30, nullable = false, unique = true)
     private String merchantName;
 
-    @Column(name = "merchant_location", unique = true)
+    @Column(name = "merchant_location", length = 100, nullable = false, unique = true)
     private String merchantLocation;
 
     private Boolean open;

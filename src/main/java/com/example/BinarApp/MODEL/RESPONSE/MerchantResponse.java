@@ -8,12 +8,11 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class MerchantResponse {
-    private Long id;
+    private String MerchantCode;
     private String MerchantName;
     private String Location;
     private String open;
 
 
-    public MerchantResponse(String merchantTidakDitemukan) {
-    }
+
 }

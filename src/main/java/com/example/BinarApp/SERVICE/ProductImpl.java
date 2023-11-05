@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Slf4j
 @Service
@@ -25,10 +26,14 @@ public class ProductImpl implements ProductService {
     @Override
     public String addProduct(String inputProductName, String inputPrice , String merchantCode) {
             Optional<Merchant> merchant = merchantRepository.findByMerchantCode(merchantCode);
+            Merchant merchant1 = merchant.get();
             Product productNew = new Product();
+        UUID uuid = UUID.randomUUID();
+        String kode = uuid.toString().substring(0, 5);
+            productNew.setProductCode(kode);
             productNew.setProductName(inputProductName);
             productNew.setPrice(Double.valueOf(inputPrice));
-            productNew.setMerchant(merchant.get());
+            productNew.setMerchant(merchant1);
 
 
             if (ProdukRepository.existsByProductName(inputProductName) || ProdukRepository.existsByPrice(inputPrice)) {
@@ -57,7 +62,7 @@ public class ProductImpl implements ProductService {
 
     @Override
     public Product updateProduct(Product product) {
-        Optional<Product> ProductByID = produkRepository.findById(product.getProductCode());
+        Optional<Product> ProductByID = produkRepository.findById(product.getId());
         if (ProductByID.isPresent()) {
             Product product1= ProductByID.get();
             product1.setProductCode(product.getProductCode() != null ? product.getProductCode() : product1.getProductCode());
@@ -70,11 +75,10 @@ public class ProductImpl implements ProductService {
             log.error("Produk tidak ditemukan");
             return  null;
         }
-
     }
 
     @Override
-    public void delleteProduct(Long product) {
+    public void delleteProduct(String product) {
         if (produkRepository.existsById(product)){
             produkRepository.deleteById(product);
             log.info("produk Berhasil dihapus {}", product);

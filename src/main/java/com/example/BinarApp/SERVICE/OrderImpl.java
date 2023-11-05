@@ -4,9 +4,9 @@ import com.example.BinarApp.ENTITY.Order;
 import com.example.BinarApp.ENTITY.OrderDetail;
 import com.example.BinarApp.ENTITY.Product;
 import com.example.BinarApp.ENTITY.User;
-import com.example.BinarApp.MODEL.RESPONSE.OrderRequest;
-import com.example.BinarApp.MODEL.RESPONSE.OrderResponses;
-import com.example.BinarApp.MODEL.RESPONSE.OrderStatus;
+import com.example.BinarApp.MODEL.REQUEST.OrderRequest;
+import com.example.BinarApp.MODEL.RESPONSE.OrderResponse;
+import com.example.BinarApp.MODEL.ENUM.OrderStatus;
 import com.example.BinarApp.REPOSITORY.OrderDetailRepository;
 import com.example.BinarApp.REPOSITORY.OrderRepository;
 import com.example.BinarApp.REPOSITORY.ProdukRepository;
@@ -15,7 +15,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -34,10 +33,10 @@ public class OrderImpl implements OrderService {
     private UserRepository userRepository;
 
     @Override
-    public String createOrder(OrderRequest orderRequest) {
+    public OrderResponse createOrder(OrderRequest orderRequest) {
         Optional<User>user = userRepository.findById(orderRequest.getUserId());
         if(!user.isPresent()){
-            return "Pesanan gagal";
+            return null;
 
         }
         Order order = new Order();
@@ -58,6 +57,7 @@ public class OrderImpl implements OrderService {
 
                 } ).collect(Collectors.toList());
         order.setOrderDetailList(orderDetails);
-     return"Sucsess";
+        orderRepository.save(order);
+     return null;
     }
 }

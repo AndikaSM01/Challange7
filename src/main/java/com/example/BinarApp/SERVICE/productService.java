@@ -8,7 +8,7 @@ import java.util.List;
 public interface ProductService {
 String addProduct( String inputProductName , String inputPrice , String merchantCode );
 Product updateProduct(Product product);
-void delleteProduct(Long product);
+void delleteProduct(String product);
 
     Page<Product> getProductPaged(int page);
 }

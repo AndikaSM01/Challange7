@@ -17,7 +17,7 @@ import java.util.Optional;
 @Service
 public class UserImpl implements UserService {
     @Autowired
-    private UserRepository userRepository;
+    UserRepository userRepository;
     @Override
     public String register(String inputEmail, String inputUsername, String inputpassword) {
 

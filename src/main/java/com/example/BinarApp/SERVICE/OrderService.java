@@ -1,13 +1,8 @@
 package com.example.BinarApp.SERVICE;
 
-import com.example.BinarApp.ENTITY.Order;
-import com.example.BinarApp.ENTITY.OrderDetail;
-import com.example.BinarApp.ENTITY.User;
-import com.example.BinarApp.MODEL.RESPONSE.OrderRequest;
-import com.example.BinarApp.MODEL.RESPONSE.OrderResponses;
-
-import java.util.List;
+import com.example.BinarApp.MODEL.REQUEST.OrderRequest;
+import com.example.BinarApp.MODEL.RESPONSE.OrderResponse;
 
 public interface OrderService {
-    String createOrder(OrderRequest orderRequest);
+    OrderResponse createOrder(OrderRequest orderRequest);
 }

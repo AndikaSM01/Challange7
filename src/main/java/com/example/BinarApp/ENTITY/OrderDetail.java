@@ -1,5 +1,6 @@
 package com.example.BinarApp.ENTITY;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class OrderDetail {
 
  @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id")
+     @JsonIgnore
     private Order order ;
 
  @ManyToOne(fetch = FetchType.LAZY)
